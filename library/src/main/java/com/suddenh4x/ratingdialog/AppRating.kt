@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ComponentActivity
 import androidx.fragment.app.DialogFragment
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -41,7 +42,7 @@ object AppRating {
 
     fun openPlayStoreListing(context: Context) = FeedbackUtils.openPlayStoreListing(context)
 
-    data class Builder(var activity: AppCompatActivity) {
+    data class Builder(var activity: ComponentActivity) {
         internal var isDebug = false
         internal var reviewManger: ReviewManager? = null
         private var dialogOptions = DialogOptions()
@@ -304,16 +305,16 @@ object AppRating {
                 showGoogleInAppReview()
             } else {
                 RatingLogger.debug("In-app review from Google hasn't been activated. Showing library dialog now.")
-                RateDialogFragment.newInstance(dialogOptions)
-                    .show(activity.supportFragmentManager, TAG)
+                // RateDialogFragment.newInstance(dialogOptions)
+                //     .show(activity.supportFragmentManager, TAG)
             }
         }
 
         fun showIfMeetsConditions(): Boolean {
-            if (activity.supportFragmentManager.findFragmentByTag(TAG) != null) {
-                RatingLogger.info("Stop checking conditions, rating dialog is currently visible.")
-                return false
-            }
+            // if (activity.supportFragmentManager.findFragmentByTag(TAG) != null) {
+            //     RatingLogger.info("Stop checking conditions, rating dialog is currently visible.")
+            //     return false
+            // }
 
             if (dialogOptions.countAppLaunch) {
                 RatingLogger.debug("App launch will be counted: countAppLaunch is true.")
