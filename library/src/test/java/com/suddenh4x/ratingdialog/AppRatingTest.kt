@@ -422,26 +422,26 @@ class AppRatingTest {
             verify(exactly = 1) { appRatingBuilder.showGoogleInAppReview() }
         }
 
-        @Test
-        fun `creates and shows new RatingDialogFragment if useGoogleInAppReview is false`() {
-            dialogOptions.useGoogleInAppReview = false
-            mockkObject(RateDialogFragment)
-            val ratingDialogFragment: RateDialogFragment = mockk(relaxed = true)
-            val supportFragmentManager: FragmentManager = mockk()
-            every { RateDialogFragment.newInstance(any()) } returns ratingDialogFragment
-            every { activity.supportFragmentManager } returns supportFragmentManager
-
-            appRatingBuilder.showNow()
-
-            verify(exactly = 1) {
-                ratingDialogFragment.show(
-                    supportFragmentManager,
-                    any()
-                )
-            }
-            verify(exactly = 0) { appRatingBuilder.showGoogleInAppReview() }
-            confirmVerified(ratingDialogFragment)
-        }
+        // @Test
+        // fun `creates and shows new RatingDialogFragment if useGoogleInAppReview is false`() {
+        //     dialogOptions.useGoogleInAppReview = false
+        //     mockkObject(RateDialogFragment)
+        //     val ratingDialogFragment: RateDialogFragment = mockk(relaxed = true)
+        //     val supportFragmentManager: FragmentManager = mockk()
+        //     every { RateDialogFragment.newInstance(any()) } returns ratingDialogFragment
+        //     every { activity.supportFragmentManager } returns supportFragmentManager
+        //
+        //     appRatingBuilder.showNow()
+        //
+        //     verify(exactly = 1) {
+        //         ratingDialogFragment.show(
+        //             supportFragmentManager,
+        //             any()
+        //         )
+        //     }
+        //     verify(exactly = 0) { appRatingBuilder.showGoogleInAppReview() }
+        //     confirmVerified(ratingDialogFragment)
+        // }
     }
 
     @Nested
