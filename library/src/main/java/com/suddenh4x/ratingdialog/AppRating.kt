@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ComponentActivity
 import androidx.fragment.app.DialogFragment
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -41,7 +42,7 @@ object AppRating {
 
     fun openPlayStoreListing(context: Context) = FeedbackUtils.openPlayStoreListing(context)
 
-    data class Builder(var activity: AppCompatActivity) {
+    data class Builder(var activity: ComponentActivity) {
         internal var isDebug = false
         internal var reviewManger: ReviewManager? = null
         private var dialogOptions = DialogOptions()
