@@ -337,7 +337,7 @@ object AppRating {
             requestTask?.addOnCompleteListener { request ->
                 if (request.isSuccessful) {
                     val reviewInfo = request.result
-                    val flow = reviewManger?.launchReviewFlow(activity, reviewInfo)
+                    val flow = reviewInfo?.let { reviewManger?.launchReviewFlow(activity, it) }
                     flow?.addOnCompleteListener { task ->
                         RatingLogger.info("Google in-app review request completed.")
                         PreferenceUtil.onGoogleInAppReviewFlowCompleted(activity)
