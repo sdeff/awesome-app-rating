@@ -2,9 +2,8 @@ package com.suddenh4x.ratingdialog
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import androidx.activity.ComponentActivity
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ComponentActivity
 import androidx.fragment.app.DialogFragment
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -47,7 +46,7 @@ object AppRating {
         internal var reviewManger: ReviewManager? = null
         private var dialogOptions = DialogOptions()
 
-        internal constructor(activity: AppCompatActivity, dialogOptions: DialogOptions) : this(activity) {
+        internal constructor(activity: ComponentActivity, dialogOptions: DialogOptions) : this(activity) {
             this.dialogOptions = dialogOptions
         }
 
